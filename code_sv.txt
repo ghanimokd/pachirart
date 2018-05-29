@@ -1,0 +1,5 @@
+<div class="col-sm-2" style="border: groove; height: 250px;">
+<input class="champ" type="text" value="saisir le nom de l'artsite)"/>
+
+<img src="<?php echo $b['image'] ?>" style="height: 220; width: auto; margin-left: auto; margin-right: auto; margin-top: auto; border: 0px groove #C0BFA9; border-radius: 1%;">     
+        <h4><?php echo $b['nomO'] ?></h4>
