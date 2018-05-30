@@ -222,20 +222,20 @@
         <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-glass"></span>Devenir Partenaire
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-            <li><a href="#">Artiste</a></li>
+            <li><a href="test.php">Artiste</a></li>
             <li><a href="#">Galleriste</a></li>
             <li><a href="#">Amateur</a></li> 
           </ul>
         <li><a href="affiche_oeuvre.php"><span class="glyphicon glyphicon-camera"></span>Gallerie</a></li>
         <li><a href="#contact"><span class="glyphicon glyphicon-envelope"></span>CONTACT</a></li>              
           
-          <li><a href="#contact"><span class="glyphicon glyphicon-shopping-cart"></span>Panier</a></li>
+          <li><a href="affiche_oeuvre.php"><span class="glyphicon glyphicon-shopping-cart"></span>Panier</a></li>
           
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-lock"></span>Login
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Inscription</a></li>
+            <li><a href="inscription.php">Inscription</a></li>
             <li><a href="#">Connexion</a></li>
             <li><a href="#">Deconnexion</a></li> 
           </ul>
@@ -249,85 +249,56 @@
     
   </div>
 </nav>
-<?php
-    $db = new PDO('mysql:host=localhost;dbname=pachirart', 'root', '');
-    $data = $db->query('select * from oeuvre');
-    $data->execute();
-    ?> 
-    <?php
-        while ($a = $data->fetch()) 
-    {
-        ?> 
-<div id="my_carousel" class="carousel slide" data-ride="carousel">
-<!-- Bulles -->
-<ol class="carousel-indicators">
-<li data-target="#my_carousel" data-slide-to="0" class="active"></li>
-<li data-target="#my_carousel" data-slide-to="1"></li>
-<li data-target="#my_carousel" data-slide-to="2"></li>
-</ol>
-<!-- Slides -->
-<div class="carousel-inner">
-<!-- Page 1 -->
-<div class="item active">  
-<div class="carousel-page">
-<img src="/images/bootstrap.png" class="img-responsive" style="margin:0px auto;" />
-</div> 
-<div class="carousel-caption">Page 1 de présentation</div>
-</div>   
-<!-- Page 2 -->
-<div class="item"> 
-<div class="carousel-page"><img src="/images/twitter-bootstrap.jpg" class="img-responsive img-rounded" 
-style="margin:0px auto;"  /></div> 
-<div class="carousel-caption">Page 2 de présentation</div>
-</div>  
-<!-- Page 3 -->
-<div class="item">  
-<div class="carousel-page">
-<img src="/images/tablette.png" class="img-responsive img-rounded" 
-style="margin:0px auto;max-height:100%;"  />
-</div>  
-<div class="carousel-caption">Page 2 de présentation</div>
-</div>     
+
+<div class="container" style="margin-top: 60px;">
+    
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="img/danceur.jpg" alt="Danceur Marquizien" style="width: auto; height: 500px;">
+      </div>
+
+      <div class="item">
+        <img src="img/femme.jpg" alt="Femme" style="width:auto; height: 500px;">
+      </div>
+    
+      <div class="item">
+        <img src="img/shetland.jpg" alt="Shetland" style="width:auto; height: 500px;">
+      </div>
+      <div class="item">
+        <img src="img/mercedes.jpg" alt="Mercedes" style="width:auto; height: 500px;">
+      </div>
+        <div class="item">
+        <img src="img/fiebike.jpg" alt="FireBicke" style="width:auto; height: 500px;">
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 </div>
-<!-- Contrôles -->
-<a class="left carousel-control" href="#my_carousel" data-slide="prev">
-<span class="glyphicon glyphicon-chevron-left"></span>
-</a>
-<a class="right carousel-control" href="#my_carousel" data-slide="next">
-<span class="glyphicon glyphicon-chevron-right"></span>
-</a>
-</div>
+
 <!-- Container (The Band Section) -->
 <!-- Container (The Band Section) -->
 
     
-  <!-- Photo Grid -->
-<?php
-    $db = new PDO('mysql:host=localhost;dbname=pachirart', 'root', '');
-    $data = $db->query('select * from oeuvre');
-    $data->execute();
-    while ($a = $data->fetch()) 
-    {
-        ?>
-  <div class="row">
-      
-    <div class="col-md-3">
-                <form   style="width: 200px; height: 250px;" method="post" action="affiche_oeuvre.php">
-                    <div style="border: 1px solid gray; background-color: #f1f1f1;">
-                        <img src="<?php echo $a['image']; ?>" class="img-responsive" style="width:200px; height: 220px;" /><br />
-                        <h4 class="text-info"><?php echo $a['nomO']; ?></h4>
-                            <input name="id" value="<?php echo $a['id']?>" type="hidden">
-                            <input name="num_vnt" value="<?php echo $a['id']?>" type="hidden">
-                        <h4 class="text-danger"><?php echo $a['prix']; ?> €</h4>
-                        <input style="margin-left:5px; margin-right:5px; width:180px; align: center;" type="text" name="qte" class="form-control" value="1"/>
-                        <input type="hidden" name="hidden_name" value="<?php echo $a['pres']; ?>" />
-                                                
-                    </div>           
-                </form>  
-            </div>
-        <?php }
-    ?>
- 
+    
+   
 <!-- Container (Contact Section) -->
 <div id="contact" class="container">
   <h3 style="margin-top: 200px;" class="text-center"><center>Contactez Nous</center></h3>
@@ -432,7 +403,7 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
   <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a><br><br>
-  <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" data-toggle="tooltip" title="Visit w3schools">www.w3schools.com</a></p> 
+  <p> <a href="https://www.w3schools.com" data-toggle="tooltip" title="Visit w3schools">www.w3schools.com</a></p> 
 </footer>
 
 <script>
